@@ -1,0 +1,1892 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/8/2017 12:12:01 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC597"
+  DTS:CreatorName="WBOOLWATER\craig.roberts"
+  DTS:DTSID="{E37ACF9D-5276-46A6-AAB6-44E85B846D33}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="FulcrumJobHistory"
+  DTS:PackageType="5"
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{5B31FB28-3107-4DF2-BB6E-7FE12694D106}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get the Data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{800BE3CC-9B85-4D87-A30C-2664F02ECE7D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get the Data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Get the Data\Add GUID"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;10"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Add GUID"
+              version="10">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
+        {
+            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Input0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called once for every row that passes through the component from Input0.
+    ///
+    /// Example of reading a value from a column in the the row:
+    ///  string zipCode = Row.ZipCode
+    ///
+    /// Example of writing a value to a column in the row:
+    ///  Row.ZipCode = zipCode
+    /// </summary>
+    /// <param name="Row">The row that is currently passing through the component</param>
+    public override void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+        // Create a Globally Unique Identifier with SSIS
+        Row.UID = System.Guid.NewGuid();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Input0Buffer: ScriptBuffer
+
+{
+    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Guid UID
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool UID_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_e5a6df8cd332476cb28fe3ec1211b6ed.Properties.Settings.get_Default():SC_e5a6df8cd332476cb28fe3ec1211b6ed.Properties.Sett" +
+    "ings")]
+
+namespace SC_e5a6df8cd332476cb28fe3ec1211b6ed.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_e5a6df8cd332476cb28fe3ec1211b6ed.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0e543c5b-e67e-414f-b9f1-35a9193ebd2f}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_e5a6df8cd332476cb28fe3ec1211b6ed</RootNamespace>
+    <AssemblyName>SC_e5a6df8cd332476cb28fe3ec1211b6ed</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptComponent" GeneratedNamespace="SC_e5a6df8cd332476cb28fe3ec1211b6ed" IconIndex="0"></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>SC_e5a6df8cd332476cb28fe3ec1211b6ed</msb:CodeName>
+		<msb:DisplayName>SC_e5a6df8cd332476cb28fe3ec1211b6ed</msb:DisplayName>
+		<msb:ProjectId>{A847B1FE-0886-4B82-AC14-090B4E9F645C}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="SC_e5a6df8cd332476cb28fe3ec1211b6ed.csproj"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="BufferWrapper.cs"/>
+		<msb:File Include="main.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ComponentWrapper.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_e5a6df8cd332476cb28fe3ec1211b6ed")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_e5a6df8cd332476cb28fe3ec1211b6ed")]
+[assembly: AssemblyCopyright("Copyright @  2017")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_e5a6df8cd332476cb28fe3ec1211b6ed.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_e5a6df8cd332476cb28fe3ec1211b6ed.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_e5a6df8cd332476cb28fe3ec1211b6ed.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_e5a6df8cd332476cb28fe3ec1211b6ed.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_e5a6df8cd332476cb28fe3ec1211b6ed.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_e5a6df8cd332476cb28fe3ec1211b6ed.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAO3K3V0AAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAA/jAA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAKwwAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAABBEAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADg
+MAAAAAAAAEgAAAACAAUAjCEAAGgOAAABAAAAAAAAAPQvAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACioyAygSAAAKbwYAAAYqHgIoCgAA
+BioqAgMEBSgTAAAKKjoCFgOMEQAAASgUAAAKKloDLAgCFigVAAAKKnIBAABwcxYAAAp6HgIoFwAA
+CioeAigYAAAKKn4CKBkAAAoCAnMOAAAGfQEAAAQCAnMPAAAGfQIAAAQqkgRyngAAcBpvGgAACiwV
+AgUCAygbAAAKDgRzBQAABm8MAAAGKkorBwIDbw0AAAYDbwgAAAYt8SoGKjoCKBwAAAoCA30DAAAE
+KjoCKBwAAAoCA30EAAAEKh4CKBwAAAoqrn4FAAAELR5yrgAAcNAHAAACKB0AAApvHgAACnMfAAAK
+gAUAAAR+BQAABCoafgYAAAQqHgKABgAABCoafgcAAAQqHgIoIAAACioucxUAAAaABwAABCpCU0pC
+AQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAAAkBQAAI34AAJAFAAAQBgAAI1N0cmluZ3MA
+AAAAoAsAACABAAAjVVMAwAwAABAAAAAjR1VJRAAAANAMAACYAQAAI0Jsb2IAAAAAAAAAAgAAAVcV
+oAEJAQAAAPoBMwAWAAABAAAAIAAAAAgAAAAHAAAAFgAAAA8AAAAgAAAAEAAAAAMAAAAFAAAABgAA
+AAEAAAAEAAAAAQAAAAAA+gIBAAAAAAAGAPQBSAQGAIgCSAQGAEABNQQPALwEAAAGAG0BigMGANcB
+igMGALgBigMGAG8CigMGABQCigMGAC0CigMGAIQBigMGAJ8BwwIKAEgCjQAKAAcEjQAOAPgDjQAK
+ANMDjQAGAEoAQgMKAIIFjQAGAEUFQgMGACMBNQQGABgEaAQGAMcDdQMSAPMA5AISAFQB5AISANsA
+YAMGAAgBSAQGAJwDQgMGAN0CQgMGALYDQgMGAK4AQgMGAF8AQgMGAAcGigMAAAAAAQAAAAAAAQAB
+AAEAEABVAwAAEAABAAEAAQAQAOsDAAA5AAEABQABABAAZAUAAEkAAQAKAAEAEAA5BQAATQADAA4A
+AQAQAPoEAABNAAQADwAAABAAbwTLBE0ABQAQAAABEAApBcsEZQAHABQABgA5BWgABgD6BGwAAQBy
+BXAAAQByBXAAEQBJA3QAEQDLAHgAEQBPAHwAUCAAAAAAxgCmAgYAAQBYIAAAAADGALECBgABAGAg
+AAAAAMYA5AWAAAEAbSAAAAAAhhgoBAYAAgB1IAAAAACGGCgEIAACAIAgAAAAAIYICgCGAAUAjyAA
+AAAAhggiA4wABgCmIAAAAACGAPsFMAAHAK4gAAAAAIYATAUwAAcAtiAAAAAAhhgoBAYABwDWIAAA
+AADGANcFkQAHAPsgAAAAAMYB0AWAAAsADiEAAAAAxgHkBYAADAAQIQAAAACGGCgEmwANAB8hAAAA
+AIYYKASbAA4ALiEAAAAAgxgoBAYADwA2IQAAAACTCBQEoQAPAGIhAAAAAJMIswCmAA8AaSEAAAAA
+kwi/AKsADwBxIQAAAACWCFgFsQAQAHghAAAAAIYYKAQGABAAgCEAAAAAkRguBLYAEAAAAAEA/wUA
+AAEADQQAAAIABAUAAAMA4QMAAAEAvQIAAAEAvQIAAAEAEgAAAAIAgwAAAAMADQQAAAQA4QMAAAEA
+DQQAAAEA/wUAAAEAiAUAAAEAiAUAAAEAvQIJACgEAQARACgEBgAZACgECgApACgEEAAxACgEEAA5
+ACgEEABBACgEEABJACgEEABRACgEEABZACgEEABhACgEEABpACgEBgChACgEBgDBACgEFQDRACgE
+BgCRAKYCBgCRALECBgCJAEcAGwBxACgEIABxADkDKgBxADEDAQDZACgEEABxAPsFMABxAEwFMACR
+ACgEBgDhADIFNACRABgFOwCZACgEBgDxAHEAQQDxAAMGSACpACgETgDJACgEBgAuAAsA0gAuABMA
+2wAuABsA+gAuACMAAwEuACsALAEuADMALAEuADsALAEuAEMAAwEuAEsAMgEuAFMALAEuAFsASQFD
+AGMAkwFpAHMA+gCJAHMA+gDhAHsAkwHjAGsAkwEDAAEABwADAAgABQAAAA4AugAAACYDvwAAABgE
+wwAAANMAyAAAAFwFzQABAAYAAwABAAcABQACABEABwACABIACQABABMACQACABQACwAEgAAAAQAA
+AAAAAAAAAAAAAAAjAAAABAAAAAAAAAAAAAAAVgAaAAAAAAANAAAAAAAAAAAAAABfAJIFAAAAAA0A
+AAAAAAAAAAAAAF8ArwUAAAAABAAAAAAAAAAAAAAAVgBCAwAAAAAAAAAAAQAAAHkEAAAAAAA8TW9k
+dWxlPgBzZXRfVUlEAElucHV0SUQAbXNjb3JsaWIAU0NfZTVhNmRmOGNkMzMyNDc2Y2IyOGZlM2Vj
+MTIxMWI2ZWQATmV3R3VpZABkZWZhdWx0SW5zdGFuY2UAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlw
+ZUZyb21IYW5kbGUASW5wdXROYW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lAFR5
+cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9uU2V0
+dGluZ3NCYXNlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRl
+AERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JC
+cm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFy
+a0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9u
+QXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0
+aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRB
+dHRyaWJ1dGUAU1NJU1NjcmlwdENvbXBvbmVudEVudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlD
+b21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAFByZUV4ZWN1dGUA
+UG9zdEV4ZWN1dGUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBTdHJpbmcAU3lzdGVt
+LkNvbXBvbmVudE1vZGVsAFNDX2U1YTZkZjhjZDMzMjQ3NmNiMjhmZTNlYzEyMTFiNmVkLmRsbABz
+ZXRfVUlEX0lzTnVsbABTZXROdWxsAHNldF9JdGVtAFN5c3RlbQByZXNvdXJjZU1hbgBTY3JpcHRN
+YWluAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZs
+ZWN0aW9uAEludmFsaWRPcGVyYXRpb25FeGNlcHRpb24AU3RyaW5nQ29tcGFyaXNvbgBDdWx0dXJl
+SW5mbwBPdXRwdXROYW1lTWFwAE91dHB1dE1hcABJbnB1dDBCdWZmZXIAUGlwZWxpbmVCdWZmZXIA
+U2NyaXB0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIALmN0b3IALmNjdG9yAFN5c3RlbS5EaWFn
+bm9zdGljcwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMA
+U0NfZTVhNmRmOGNkMzMyNDc2Y2IyOGZlM2VjMTIxMWI2ZWQuUHJvcGVydGllcy5SZXNvdXJjZXMu
+cmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFNDX2U1YTZkZjhjZDMzMjQ3NmNiMjhmZTNlYzEyMTFi
+NmVkLlByb3BlcnRpZXMAVmFyaWFibGVzAEJ1ZmZlckNvbHVtbkluZGV4ZXMAR2V0Q29sdW1uSW5k
+ZXhlcwBTZXR0aW5ncwBFcXVhbHMAQ29ubmVjdGlvbnMAT2JqZWN0AEVuZE9mUm93c2V0AGdldF9E
+ZWZhdWx0AFVzZXJDb21wb25lbnQAUGFyZW50Q29tcG9uZW50AFNjcmlwdENvbXBvbmVudABNaWNy
+b3NvZnQuU3FsU2VydmVyLlR4U2NyaXB0AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuUGlwZWxpbmVIb3N0
+AElucHV0MF9Qcm9jZXNzSW5wdXQASW5wdXQwX1Byb2Nlc3NJbnB1dFJvdwBOZXh0Um93AGdldF9B
+c3NlbWJseQAAgJtJAHMATgB1AGwAbAAgAHAAcgBvAHAAZQByAHQAeQAgAGMAYQBuAG4AbwB0ACAA
+YgBlACAAcwBlAHQAIAB0AG8AIABGAGEAbABzAGUALgAgAEEAcwBzAGkAZwBuACAAYQAgAHYAYQBs
+AHUAZQAgAHQAbwAgAHQAaABlACAAYwBvAGwAdQBtAG4AIABpAG4AcwB0AGUAYQBkAC4AAA9JAG4A
+cAB1AHQAIAAwAABxUwBDAF8AZQA1AGEANgBkAGYAOABjAGQAMwAzADIANAA3ADYAYwBiADIAOABm
+AGUAMwBlAGMAMQAyADEAMQBiADYAZQBkAC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8A
+dQByAGMAZQBzAACgAAVXBQpRTZd/dTZ/sY8PAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFdBAAA
+EUUJIAMBEj0dCBJBBSACAQgcAyAAAgYgAgIOEXUFIAEdCAgGAAESeRF9BSAAEoCBByACAQ4SgIEI
+t3pcVhk04IkIiYRdzYCAzJEDBhIUAwYSGAMGEkkDBhJVAwYSWQMGEiAFIAEBEgwFIAEBEUUEIAEB
+AgkgBAEIDhI9EkEFIAEBEkkEAAASVQQAABJZBQABARJZBAAAEiADAAABBCgAEUUDKAACBAgAElUE
+CAASWQQIABIgCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAA
+ACgBACNTQ19lNWE2ZGY4Y2QzMzI0NzZjYjI4ZmUzZWMxMjExYjZlZAAABQEAAAAAFgEAEUNvcHly
+aWdodCBAICAyMDE3AABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjUBAFQOFEZyYW1ld29y
+a0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNQQBAAAAtAAAAM7K774BAAAAkQAAAGxTeXN0
+ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBD
+dWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJl
+c291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAANQwAAAAAAAA
+AAAAAO4wAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgMAAAAAAAAAAAAAAAAF9Db3JEbGxNYWlu
+AG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAA7AMAAAAAAAAAAAAA7AM0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABAAAAAAAAAAEAAAAAAD8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBEwDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAACgDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBDAF8AZQA1AGEANgBkAGYAOABjAGQAMwAzADIANAA3ADYAYwBiADIAOABmAGUAMwBlAGMA
+MQAyADEAMQBiADYAZQBkAAAAMAAIAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADAALgAwAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABTAEMAXwBlADUAYQA2AGQA
+ZgA4AGMAZAAzADMAMgA0ADcANgBjAGIAMgA4AGYAZQAzAGUAYwAxADIAMQAxAGIANgBlAGQALgBk
+AGwAbAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAAAEMAbwBwAHkAcgBpAGcA
+aAB0ACAAQAAgACAAMgAwADEANwAAACoAAQABAEwAZQBnAGEAbABUAHIAYQBkAGUAbQBhAHIAawBz
+AAAAAAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0AZQAAAFMAQwBfAGUA
+NQBhADYAZABmADgAYwBkADMAMwAyADQANwA2AGMAYgAyADgAZgBlADMAZQBjADEAMgAxADEAYgA2
+AGUAZAAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAAAABTAEMAXwBlADUA
+YQA2AGQAZgA4AGMAZAAzADMAMgA0ADcANgBjAGIAMgA4AGYAZQAzAGUAYwAxADIAMQAxAGIANgBl
+AGQAAAA0AAgAAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAA
+OAAIAAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAAAxAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_e5a6df8cd332476cb28fe3ec1211b6ed</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum"
+                  typeConverter="NOTBROWSABLE">df3b11f65af5bcac5738e0ec443ff729</property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataShaChecksum"
+                  typeConverter="NOTBROWSABLE">1510ee656a587e032f97521f66a3d8fede17b893</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Get the Data\Add GUID.Inputs[Input 0]"
+                  hasSideEffects="true"
+                  name="Input 0">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Get the Data\Add GUID.Outputs[Output 0]"
+                  name="Output 0"
+                  synchronousInputId="Package\Get the Data\Add GUID.Inputs[Input 0]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Get the Data\Add GUID.Outputs[Output 0].Columns[UID]"
+                      dataType="guid"
+                      lineageId="Package\Get the Data\Add GUID.Outputs[Output 0].Columns[UID]"
+                      name="UID" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Get the Data\Check for new records"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Check for new records"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Fulcrum_Job_History]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Fulcrum_Job_History]) [refTable]
+where [refTable].[name] = ? and [refTable].[run_date] = ? and [refTable].[run_time] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="name" dataType="DT_WSTR" length="128" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="message" dataType="DT_WSTR" length="4000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="step_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="step_name" dataType="DT_WSTR" length="128" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Time" dataType="DT_DBTIME2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="run_duration" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="minutes" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Seconds" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Total Run Time" dataType="DT_STR" length="28" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="run_date" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="run_time" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[name]};#{Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_date]};#{Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_time]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Get the Data\Check for new records.Connections[OleDbConnection]"
+                  connectionManagerID="{B75DD08D-59D8-4C49-8B3B-18230329ABF0}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[swsvr92.GeneralDataExtracts]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Get the Data\Check for new records.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Get the Data\Check for new records.Inputs[Lookup Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="name"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[name]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">name</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Get the Data\Check for new records.Inputs[Lookup Input].Columns[run_date]"
+                      cachedDataType="i4"
+                      cachedName="run_date"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_date]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">run_date</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Get the Data\Check for new records.Inputs[Lookup Input].Columns[run_time]"
+                      cachedDataType="i4"
+                      cachedName="run_time"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_time]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">run_time</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Get the Data\Check for new records.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Get the Data\Check for new records.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Get the Data\Check for new records.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Get the Data\Check for new records.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Get the Data\Check for new records.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Get the Data\Check for new records.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Get the Data\Check for new records.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Check for new records.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Get the Data\Check for new records.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Check for new records.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Get the Data\Get Data from MSDB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Get Data from MSDB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select j.name,h.step_id,h.step_name, h.message,h.run_date,convert(date,convert(char(8),h.run_date)) as date , h.run_time,/* cast (h.run_time as char)as 'Time_Char',
+msdb.dbo.agent_datetime(h.run_date, h.run_time) as 'RunDateTime',*/ cast ((msdb.dbo.agent_datetime(h.run_date, h.run_time)) as time) as 'Time', h.run_duration,
+ /*len(h.run_duration) as length,*/
+(Case
+	when (len(h.run_duration) &gt;4)
+		then left (h.run_duration,len(h.run_duration)-4)
+		else 0
+END) as hours,
+(case when LEN(h.run_duration) &gt;2 and len(h.run_duration) &lt; 5
+		then left(h.run_duration,(len(h.run_duration)-2))
+		else 0  
+end) as minutes,
+right(RTRIM(h.run_duration),2) as Seconds,
+
+CONCAT((Case
+	when (len(h.run_duration) &gt;4)
+		then left (h.run_duration,len(h.run_duration)-4)
+		else 0
+END)
+,':',(case when LEN(h.run_duration) &gt;2 and len(h.run_duration) &lt; 5
+		then left(h.run_duration,(len(h.run_duration)-2))
+		else 0  
+end),':',right(RTRIM(h.run_duration),2)
+) as 'Total Run Time'
+
+from sysjobhistory h
+inner join sysjobs j
+on j.job_id = h.job_id
+where j.name in ('FI_completionCheck','FI_ConfigData','FI_Insert','FI_Small_linked_Apps','FI_Update','Meter Replacement','MEP-FulcrumSyncData','Get2017MetersData')
+
+order by name</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Get the Data\Get Data from MSDB.Connections[OleDbConnection]"
+                  connectionManagerID="{CA9B771D-2F0A-40F4-AFBD-5F8865E1DF4C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SWSVR92.msdb]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="128"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[step_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[step_id]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[step_id]"
+                      name="step_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[step_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[step_name]"
+                      length="128"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[step_name]"
+                      name="step_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[Time]"
+                      dataType="dbTime2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[Time]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[Time]"
+                      name="Time"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_duration]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[run_duration]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_duration]"
+                      name="run_duration"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[hours]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[hours]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[hours]"
+                      name="hours"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[minutes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[minutes]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[minutes]"
+                      name="minutes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[Seconds]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[Seconds]"
+                      length="2"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[Seconds]"
+                      name="Seconds"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[Total Run Time]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[Total Run Time]"
+                      length="28"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[Total Run Time]"
+                      name="Total Run Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_date]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[run_date]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_date]"
+                      name="run_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_time]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[run_time]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_time]"
+                      name="run_time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[message]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[message]"
+                      length="4000"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[message]"
+                      name="message"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="128"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[step_id]"
+                      dataType="i4"
+                      name="step_id" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[step_name]"
+                      dataType="wstr"
+                      length="128"
+                      name="step_name" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      dataType="dbDate"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[Time]"
+                      dataType="dbTime2"
+                      name="Time"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[run_duration]"
+                      dataType="i4"
+                      name="run_duration" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[hours]"
+                      dataType="i4"
+                      name="hours" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[minutes]"
+                      dataType="i4"
+                      name="minutes" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[Seconds]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Seconds" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[Total Run Time]"
+                      codePage="1252"
+                      dataType="str"
+                      length="28"
+                      name="Total Run Time" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[run_date]"
+                      dataType="i4"
+                      name="run_date" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[run_time]"
+                      dataType="i4"
+                      name="run_time" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].ExternalColumns[message]"
+                      dataType="wstr"
+                      length="4000"
+                      name="message" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[name]"
+                      dataType="wstr"
+                      length="128"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[step_id]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[step_id]"
+                      name="step_id" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[step_name]"
+                      dataType="wstr"
+                      length="128"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[step_name]"
+                      name="step_name" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[message]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[message]"
+                      name="message" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[run_date]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[run_date]"
+                      name="run_date" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[date]"
+                      dataType="dbDate"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[date]"
+                      name="date" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[run_time]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[run_time]"
+                      name="run_time" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[Time]"
+                      dataType="dbTime2"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[Time]"
+                      name="Time"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[run_duration]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[run_duration]"
+                      name="run_duration" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[hours]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[hours]"
+                      name="hours" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[minutes]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[minutes]"
+                      name="minutes" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[Seconds]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[Seconds]"
+                      name="Seconds" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[Total Run Time]"
+                      codePage="1252"
+                      dataType="str"
+                      length="28"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[Total Run Time]"
+                      name="Total Run Time" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Get the Data\Write to Fulcrum_job_history"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Write to Fulcrum_job_history"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fulcrum_Job_History]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Get the Data\Write to Fulcrum_job_history.Connections[OleDbConnection]"
+                  connectionManagerID="{B75DD08D-59D8-4C49-8B3B-18230329ABF0}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[swsvr92.GeneralDataExtracts]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[step_id]"
+                      cachedDataType="i4"
+                      cachedName="step_id"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[step_id]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[step_id]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[step_name]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="step_name"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[step_name]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[step_name]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[date]"
+                      cachedDataType="dbDate"
+                      cachedName="date"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[date]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[Time]"
+                      cachedDataType="dbTime2"
+                      cachedName="Time"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[Time]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[run_duration]"
+                      cachedDataType="i4"
+                      cachedName="run_duration"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[run_duration]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_duration]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[hours]"
+                      cachedDataType="i4"
+                      cachedName="hours"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[hours]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[hours]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[minutes]"
+                      cachedDataType="i4"
+                      cachedName="minutes"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[minutes]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[minutes]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[Seconds]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Seconds"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[Seconds]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[Seconds]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[Total Run Time]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="28"
+                      cachedName="Total Run Time"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[Total Run Time]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[Total Run Time]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[run_date]"
+                      cachedDataType="i4"
+                      cachedName="run_date"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[run_date]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_date]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[run_time]"
+                      cachedDataType="i4"
+                      cachedName="run_time"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[run_time]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[run_time]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[message]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="message"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[message]"
+                      lineageId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output].Columns[message]" />
+                    <inputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].Columns[UID]"
+                      cachedDataType="guid"
+                      cachedName="UID"
+                      externalMetadataColumnId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[UID]"
+                      lineageId="Package\Get the Data\Add GUID.Outputs[Output 0].Columns[UID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="128"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[message]"
+                      dataType="wstr"
+                      length="4000"
+                      name="message" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[step_id]"
+                      dataType="i4"
+                      name="step_id" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[step_name]"
+                      dataType="wstr"
+                      length="128"
+                      name="step_name" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      dataType="dbDate"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
+                      dataType="dbTime2"
+                      name="Time"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[run_duration]"
+                      dataType="i4"
+                      name="run_duration" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[hours]"
+                      dataType="i4"
+                      name="hours" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[minutes]"
+                      dataType="i4"
+                      name="minutes" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[Seconds]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Seconds" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[Total Run Time]"
+                      codePage="1252"
+                      dataType="str"
+                      length="28"
+                      name="Total Run Time" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[UID]"
+                      dataType="guid"
+                      name="UID" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[run_date]"
+                      dataType="i4"
+                      name="run_date" />
+                    <externalMetadataColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input].ExternalColumns[run_time]"
+                      dataType="i4"
+                      name="run_time" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Get the Data\Write to Fulcrum_job_history.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Write to Fulcrum_job_history.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Get the Data\Write to Fulcrum_job_history.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Get the Data\Write to Fulcrum_job_history.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Get the Data.Paths[Lookup No Match Output]"
+              endId="Package\Get the Data\Write to Fulcrum_job_history.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Get the Data\Check for new records.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Get the Data.Paths[OLE DB Source Output]"
+              endId="Package\Get the Data\Add GUID.Inputs[Input 0]"
+              name="OLE DB Source Output"
+              startId="Package\Get the Data\Get Data from MSDB.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Get the Data.Paths[Output 0]"
+              endId="Package\Get the Data\Check for new records.Inputs[Lookup Input]"
+              name="Output 0"
+              startId="Package\Get the Data\Add GUID.Outputs[Output 0]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Get the Data"
+          TopLeft="117,184" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Get the Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Get the Data\Get Data from MSDB"
+          TopLeft="109,73" />
+        <NodeLayout
+          Size="184,45"
+          Id="Package\Get the Data\Check for new records"
+          TopLeft="104,250" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Get the Data\Write to Fulcrum_job_history"
+          TopLeft="85,345" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Get the Data\Add GUID"
+          TopLeft="132,167" />
+        <EdgeLayout
+          Id="Package\Get the Data.Paths[Output 0]"
+          TopLeft="195.5,209">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Get the Data.Paths[OLE DB Source Output]"
+          TopLeft="196.25,115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Get the Data.Paths[Lookup No Match Output]"
+          TopLeft="194.5,295">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,15.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Get the Data\Get Data from MSDB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Get the Data\Check for new records">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Fulcrum_Job_History]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Get the Data\Write to Fulcrum_job_history">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
